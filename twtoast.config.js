@@ -1,0 +1,6 @@
+{
+  //default values
+  [
+    //custom modules
+  ]
+}
