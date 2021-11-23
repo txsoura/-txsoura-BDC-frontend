@@ -71,7 +71,7 @@ const Index = () => {
     } catch (error) {
       const errors = getApiError(error);
       toast()
-        .danger('Ops!', errors.error ? errors.error : errors.message)
+        .danger('Ops!', errors.error || errors.message)
         .with({
           duration: 4000,
           speed: 1000,
@@ -123,7 +123,7 @@ const Index = () => {
       } catch (error) {
         const errors = getApiError(error);
         toast()
-          .danger('Ops!', errors.error ? errors.error : errors.message)
+          .danger('Ops!', errors.error || errors.message)
           .with({
             duration: 4000,
             speed: 1000,
@@ -163,7 +163,7 @@ const Index = () => {
     } catch (error) {
       const errors = getApiError(error);
       toast()
-        .danger('Ops!', errors.error ? errors.error : errors.message)
+        .danger('Ops!', errors.error || errors.message)
         .with({
           duration: 4000,
           speed: 1000,
@@ -385,7 +385,7 @@ const Index = () => {
                 )}
               </dd>
             </div>
-            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div className="bg-gray-50 bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Válida até</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                 {subscription.valid_until &&
