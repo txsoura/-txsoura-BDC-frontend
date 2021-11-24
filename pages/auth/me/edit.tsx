@@ -8,7 +8,6 @@ import { FormHandles, SubmitHandler } from '@unform/core';
 import Header from 'components/Header';
 import Input from 'components/Input';
 import { withNavBarLayout } from 'components/withNavBarLayout';
-import { UserProps } from 'types/user';
 import getApiError from 'utils/isApiError';
 import meEditSchema from 'schemas/meEdit';
 import getErrors from 'utils/getErrors';
@@ -20,19 +19,18 @@ const Index = () => {
   const router = useRouter();
   const formRef = useRef<FormHandles>(null);
 
-  const edit: SubmitHandler<UserProps> = useCallback(
+  const edit: SubmitHandler = useCallback(
     async data => {
       try {
         formRef.current.setErrors({});
         await meEditSchema.validate(data, { abortEarly: false });
 
-        const response = await authAPI.put(
-          'auth/user/profile-information',
-          data,
-        );
+        const {
+          data: { message: response },
+        } = await authAPI.put('auth/user/profile-information', data);
 
         toast()
-          .success('Wow!', response.data ? response.data.message : 'Atualizado')
+          .success('Wow!', response)
           .with({
             duration: 4000,
             speed: 1000,
