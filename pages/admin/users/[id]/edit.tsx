@@ -72,16 +72,18 @@ const Index = () => {
     }
   }, [id, getItem]);
 
-  const edit: SubmitHandler<UserProps> = useCallback(
+  const edit: SubmitHandler = useCallback(
     async data => {
       try {
         formRef.current.setErrors({});
         await userEditSchema.validate(data, { abortEarly: false });
 
-        const response = await serviceAPI.put(`users/${id}`, data);
+        const {
+          data: { message: response },
+        } = await serviceAPI.put(`users/${id}`, data);
 
         toast()
-          .success('Wow!', response.data ? response.data.message : 'Atualizado')
+          .success('Wow!', response)
           .with({
             duration: 4000,
             speed: 1000,
