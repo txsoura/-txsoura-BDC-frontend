@@ -1,11 +1,17 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import { useRouter } from "next/router";
-import { toast } from "tailwind-toast";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
+import { toast } from 'tailwind-toast';
 
-import { authAPI, serviceAPI } from "services/api";
-import getApiError from "utils/isApiError";
-import { UserProps } from "types/user";
+import { authAPI, serviceAPI } from 'services/api';
+import getApiError from 'utils/isApiError';
+import { UserProps } from 'types/user';
 
 interface LoginCredentials {
   email: string;
@@ -33,105 +39,69 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({} as UserProps);
 
   const logout = useCallback(async () => {
-    authAPI.post;
-    "/auth/logout";
-    ');
+    authAPI.post('/auth/logout');
 
     delete authAPI.defaults.headers.Authorization;
     delete serviceAPI.defaults.headers.Authorization;
 
-    await router.push;
-    "/auth/login";
-    ');
+    await router.push('/auth/login');
   }, [router]);
 
   const login = useCallback(async ({ email, password }) => {
-    await authAPI.get;
-    "/sanctum/csrf-cookie";
-    ');
+    await authAPI.get('/sanctum/csrf-cookie');
 
-    const csrfToken = Cookies.get;
-    "XSRF-TOKEN";
-    ');
+    const csrfToken = Cookies.get('XSRF-TOKEN');
 
-    authAPI.defaults.headers.common;
-    "X-XSRF-TOKEN";
-    '] = csrfToken;
-    serviceAPI.defaults.headers.common;
-    "X-XSRF-TOKEN";
-    '] = csrfToken;
+    authAPI.defaults.headers.common['X-XSRF-TOKEN'] = csrfToken;
+    serviceAPI.defaults.headers.common['X-XSRF-TOKEN'] = csrfToken;
 
-    return authAPI.post;
-    "auth/login";
-    ', {
-    email,
-      passwor,
-  });
-}, [];
-)
-;
+    return authAPI.post('auth/login', {
+      email,
+      password,
+    });
+  }, []);
+  const getUser = useCallback(async () => {
+    try {
+      const {
+        data: { data: response },
+      } = await authAPI.get('auth/user');
+      setUser(response);
 
-const getUser = useCallback(async () => {
-  try {
-    const {
-      data: {
-        data: response
-      } = await authAPI.get"auth/user"');
-        setUser
-    (response);
-
-    setLoading(false);
-  } catch
-    (error);
-    {
+      setLoading(false);
+    } catch (error) {
       const { isApi, status } = getApiError(error);
 
       if (isApi && status === 404) {
         toast()
-          .danger;
-        "Oops!";
-        ",\"Usuário não encontrado!\"";
-      )
-      .
-        with({
-          duration: 4000,
-          speed: 1000,
-          positionX: "end"',
-          positionY: "top"',
-          color: "bg-red-600"',
-          fontColor: "black"',
-          fontTone: 30
-        })
+          .danger('Ops!', 'Usuário não encontrado!')
+          .with({
+            duration: 4000,
+            speed: 1000,
+            positionX: 'end',
+            positionY: 'top',
+            color: 'bg-red-600',
+            fontColor: 'black',
+            fontTone: 30,
+          })
           .show();
 
-        await router.push;
-        "/auth/login";
-        ');
+        await router.push('/auth/login');
       }
 
       toast()
-        .danger;
-      "Oops!";
-      ",\"Não foi possível carregar as informações!\"";
-    )
-    .
-      with({
-        duration: 4000,
-        speed: 1000,
-        positionX: "end"',
-        positionY: "top"',
-        color: "bg-red-600"',
-        fontColor: "black"',
-        fontTone: 30
-      })
+        .danger('Ops!', 'Não foi possível carregar as informações!')
+        .with({
+          duration: 4000,
+          speed: 1000,
+          positionX: 'end',
+          positionY: 'top',
+          color: 'bg-red-600',
+          fontColor: 'black',
+          fontTone: 30,
+        })
         .show();
     }
-  }
-,
-  [router];
-)
-  ;
-
+  }, [router]);
   useEffect(() => {
     getUser();
   }, [getUser]);
@@ -144,7 +114,7 @@ const getUser = useCallback(async () => {
         loading,
         logout,
         getUser,
-        use
+        user,
       }}
     >
       {children}
@@ -156,7 +126,7 @@ function useAuth(): ContextProps {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
 
   return context;

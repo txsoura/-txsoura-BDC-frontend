@@ -15,7 +15,7 @@ export const routeRole = (WrappedComponent, role = 'user') => {
             push('/admin');
             break;
 
-          default:
+          case 'user':
             push('/dashboard');
             break;
         }
