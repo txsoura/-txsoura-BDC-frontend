@@ -1,6 +1,7 @@
-export const currencyFormatter = (value, currency = "BRL") => Intl.NumberFormat('pt-BR', {
+export const currencyFormatter = (value, currency = 'BRL') =>
+  Intl.NumberFormat('pt-BR', {
     style: 'currency',
-    currency: currency,
+    currency,
     maximumSignificantDigits: 3,
     notation: 'compact',
-}).format(value);
+  }).format(value);
