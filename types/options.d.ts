@@ -1,5 +1,5 @@
 export interface OptionsProps {
-    value: any;
-    label: any;
-    index?: number;
+  value: any;
+  label: any;
+  index?: number;
 }
