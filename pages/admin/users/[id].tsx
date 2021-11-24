@@ -54,7 +54,7 @@ const Index = () => {
     } catch (error) {
       const errors = getApiError(error);
       toast()
-        .danger('Ops!', errors.error || errors.message)
+        .danger('Ops!', errors.error ? errors.error : errors.message)
         .with({
           duration: 4000,
           speed: 1000,
@@ -106,7 +106,7 @@ const Index = () => {
       } catch (error) {
         const errors = getApiError(error);
         toast()
-          .danger('Ops!', errors.error || errors.message)
+          .danger('Ops!', errors.error ? errors.error : errors.message)
           .with({
             duration: 4000,
             speed: 1000,
