@@ -1,9 +1,9 @@
-import {AxiosError} from 'axios';
+import { AxiosError } from 'axios';
 
 export default function getAxiosError(error) {
-    const err = error as AxiosError;
+  const err = error as AxiosError;
 
-    if (err.response) {
-        return err;
-    }
+  if (err.response) {
+    return err;
+  }
 }
