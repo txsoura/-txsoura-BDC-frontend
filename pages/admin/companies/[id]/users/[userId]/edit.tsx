@@ -74,19 +74,21 @@ const Index = () => {
     }
   }, [companyId, userId, getItem]);
 
-  const edit: SubmitHandler<CompanyUserProps> = useCallback(
+  const edit: SubmitHandler = useCallback(
     async data => {
       try {
         formRef.current.setErrors({});
         await companyUserEditSchema.validate(data, { abortEarly: false });
 
-        const response = await serviceAPI.put(
+        const {
+          data: { message: response },
+        } = await serviceAPI.put(
           `companies/${companyId}/users/${userId}`,
           data,
         );
 
         toast()
-          .success('Wow!', response.data ? response.data.message : 'Atualizado')
+          .success('Wow!', response)
           .with({
             duration: 4000,
             speed: 1000,
