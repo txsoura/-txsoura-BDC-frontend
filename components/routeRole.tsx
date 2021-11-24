@@ -1,31 +1,31 @@
-import {useAuth} from "/hooks/auth";
-import {useRouter} from "next/router";
-import {useEffect} from "react";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-export const routeRole = (WrappedComponent, role: string = "user") => {
-    return props => {
-        const {user} = useAuth();
-        const {push} = useRouter();
+import { useAuth } from 'hooks/auth';
 
-        useEffect(() => {
-            if (user && user.role !== role) {
+export const routeRole = (WrappedComponent, role = 'user') => {
+  return props => {
+    const { user } = useAuth();
+    const { push } = useRouter();
 
-                switch (user.role) {
-                    case "admin" :
-                        push('/admin')
-                        break
+    useEffect(() => {
+      if (user && user.role !== role) {
+        switch (user.role) {
+          case 'admin':
+            push('/admin');
+            break;
 
-                    case "user":
-                        push('/dashboard')
-                        break
-                }
-            }
-        }, [push, user]);
-
-        if (!user) {
-            return <strong>Aguarde ...</strong>
+          default:
+            push('/dashboard');
+            break;
         }
+      }
+    }, [push, user]);
 
-        return <WrappedComponent {...props} />;
+    if (!user) {
+      return <strong>Aguarde ...</strong>;
     }
-}
+
+    return <WrappedComponent {...props} />;
+  };
+};
