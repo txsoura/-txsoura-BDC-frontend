@@ -1,13 +1,13 @@
-import 'tailwindcss/tailwind.css'
+import 'tailwindcss/tailwind.css';
 
-import HooksProvider from '/hooks';
+import HooksProvider from 'hooks';
 
-function MyApp({Component, pageProps}) {
-    return (
-        <HooksProvider>
-            <Component {...pageProps} />
-        </HooksProvider>
-    )
+function MyApp({ Component, pageProps }) {
+  return (
+    <HooksProvider>
+      <Component {...pageProps} />
+    </HooksProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

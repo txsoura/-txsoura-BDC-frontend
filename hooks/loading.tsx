@@ -1,31 +1,31 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 interface ContextProps {
-    loading: boolean;
+  loading: boolean;
 
-    setLoading(_value: boolean): void;
+  setLoading(_value: boolean): void;
 }
 
 const Loading = createContext<ContextProps>({} as ContextProps);
 
-const LoadingProvider = ({children}) => {
-    const [loading, setLoading] = useState<boolean>(true);
+const LoadingProvider = ({ children }) => {
+  const [loading, setLoading] = useState<boolean>(true);
 
-    return (
-        <Loading.Provider value={{loading, setLoading}}>
-            {children}
-        </Loading.Provider>
-    );
+  return (
+    <Loading.Provider value={{ loading, setLoading }}>
+      {children}
+    </Loading.Provider>
+  );
 };
 
 function useLoading() {
-    const context = useContext(Loading);
+  const context = useContext(Loading);
 
-    if (!context) {
-        throw new Error('useLoading must be used within a LoadingProvider');
-    }
+  if (!context) {
+    throw new Error('useLoading must be used within a LoadingProvider');
+  }
 
-    return context;
+  return context;
 }
 
-export {LoadingProvider, useLoading};
+export { LoadingProvider, useLoading };
