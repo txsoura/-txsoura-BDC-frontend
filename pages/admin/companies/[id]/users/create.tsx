@@ -28,7 +28,7 @@ const Index = () => {
     { value: 'owner', label: 'Proprietário' },
   ];
 
-  const handleOptions = useCallback((field: Array) => {
+  const handleOptions = useCallback((field: Array<any>) => {
     const options: OptionsProps[] = [];
 
     if (field) {

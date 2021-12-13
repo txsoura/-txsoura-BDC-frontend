@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BarChart from 'components/Charts/bar.js';
+import BarChart from 'components/Charts/bar.jsx';
 
 function Index() {
   const chartData = {

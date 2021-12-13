@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserIcon } from '@heroicons/react/solid';
 
-import LineChart from 'components/Charts/line.js';
+import LineChart from 'components/Charts/line.jsx';
 import { hexToRGB } from 'utils/hexToRGB';
 
 function Index() {

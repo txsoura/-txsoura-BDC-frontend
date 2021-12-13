@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 import { isNull, isUndefined } from 'underscore';
-import { Props as SelectProps } from 'react-select';
 
-interface Props extends SelectProps {
+import { OptionsProps } from 'types/options';
+
+interface Props {
   name: string;
   label: string;
-  options: any;
+  options: OptionsProps[];
+  defaultValue?: any;
 }
 
 const Index = ({ name, label, options, ...rest }: Props) => {

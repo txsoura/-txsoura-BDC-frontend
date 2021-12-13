@@ -27,7 +27,7 @@ const Index = () => {
           <div className="text-xs font-semibold text-gray-400 uppercase pt-1.5 pb-2 px-4">
             Notifications
           </div>
-          <ul>
+          {/* <ul>
             <li className="border-b border-gray-200 last:border-0">
               <a
                 className="block py-2 px-4 hover:bg-gray-50"
@@ -54,24 +54,6 @@ const Index = () => {
               >
                 <span className="block text-sm mb-2">
                   <span className="font-medium text-gray-800">
-                    Edit your information in a swipe
-                  </span>{' '}
-                  Sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim.
-                </span>
-                <span className="block text-xs font-medium text-gray-400">
-                  Feb 9, 2021
-                </span>
-              </a>
-            </li>
-            <li className="border-b border-gray-200 last:border-0">
-              <a
-                className="block py-2 px-4 hover:bg-gray-50"
-                // to="#0"
-                // onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                <span className="block text-sm mb-2">
-                  <span className="font-medium text-gray-800">
                     Say goodbye to paper receipts!
                   </span>{' '}
                   Sint occaecat cupidatat non proident, sunt in culpa qui
@@ -82,13 +64,13 @@ const Index = () => {
                 </span>
               </a>
             </li>
-          </ul>
-          <a
+          </ul> */}
+          {/* <a
             href="#"
             className="block bg-gray-800 text-white text-center font-bold py-2"
           >
             See all notifications
-          </a>
+          </a> */}
         </Menu.Items>
       </Transition>
     </Menu>

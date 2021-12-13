@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useRef } from 'react';
 import { focusHandling } from 'cruip-js-toolkit';
 import 'chartjs-adapter-moment';
@@ -8,7 +9,7 @@ import {
   DoughnutController,
   TimeScale,
   Tooltip,
-} from 'components/Charts/line.js';
+} from 'chart.js';
 // import { tailwindConfig } from '../utils/Utils';
 
 Chart.register(DoughnutController, ArcElement, TimeScale, Tooltip);

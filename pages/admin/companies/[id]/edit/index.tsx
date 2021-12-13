@@ -280,7 +280,7 @@ const Index = () => {
                         label="Celular"
                         type="text"
                         autoComplete="cellphone"
-                        defaultValue={company.cellphone}
+                        defaultValue={`${company.cellphone}`}
                       />
                     </div>
 
@@ -288,7 +288,7 @@ const Index = () => {
                       <Select
                         name="type"
                         label="Tipo"
-                        defaultValue={company.type}
+                        defaultValue={`${company.type}`}
                         options={typeOptions}
                       />
                     </div>

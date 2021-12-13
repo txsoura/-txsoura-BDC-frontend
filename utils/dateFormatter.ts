@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 export const dateFormatter = (
   value,
   date: dateStyle = 'short',

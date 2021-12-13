@@ -29,7 +29,7 @@ const Index = () => {
     { value: 'boleto', label: 'Boleto' },
   ];
 
-  const handleOptions = useCallback((field: Array) => {
+  const handleOptions = useCallback((field: Array<any>) => {
     const options: OptionsProps[] = [];
 
     if (field) {

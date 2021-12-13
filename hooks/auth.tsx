@@ -24,7 +24,7 @@ interface ContextProps {
 
   logout(): Promise<void>;
 
-  login(_credentials: LoginCredentials): Promise<boolean>;
+  login(_credentials: LoginCredentials): Promise<any>;
 
   setLoading(_isLoading: boolean): void;
 
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({} as UserProps);
 
   const logout = useCallback(async () => {
-    authAPI.post('/auth/logout');
+    await authAPI.post('/auth/logout');
 
     delete authAPI.defaults.headers.Authorization;
     delete serviceAPI.defaults.headers.Authorization;
@@ -60,6 +60,7 @@ const AuthProvider = ({ children }) => {
       password,
     });
   }, []);
+
   const getUser = useCallback(async () => {
     try {
       const {
